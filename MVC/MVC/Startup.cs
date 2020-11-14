@@ -21,6 +21,7 @@ namespace MVC
             services.AddTransient<PlanetLogic, PlanetLogic>();
             services.AddTransient<StarLogic, StarLogic>();
             services.AddTransient<SystemLogic, SystemLogic>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
