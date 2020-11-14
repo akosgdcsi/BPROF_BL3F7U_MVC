@@ -20,29 +20,29 @@ namespace Logic
 
         //crud methods
 
-        public void AddVideo(Planet item)
+        public void AddPlanet(Planet item)
         {
             this.planetRepo.Add(item);
         }
 
-        public void DeleteVideo(string ID)
+        public void DeletePlanet(string ID)
         {
             this.planetRepo.Delete(ID);
         }
 
-        public IQueryable<Planet> GetAllVideo()
+        public IQueryable<Planet> GetAllPlanet()
         {
             return planetRepo.Read();
         }
 
-        public Planet GetVideo(string ID)
+        public Planet GetPlanet(string ID)
         {
             return planetRepo.Read(ID);
         }
 
-        public void UpdateVideo(string uid, Planet newitem)
+        public void UpdatePlanet(string ID, Planet newitem)
         {
-            planetRepo.Update(uid, newitem);
+            planetRepo.Update(ID, newitem);
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Logic;
+using Models;
+using Repository;
+using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +24,9 @@ namespace MVC
             services.AddTransient<PlanetLogic, PlanetLogic>();
             services.AddTransient<StarLogic, StarLogic>();
             services.AddTransient<SystemLogic, SystemLogic>();
+            services.AddTransient<IRepository<Planet>, PlanetRepository>();
+            services.AddTransient<IRepository<Star>, StarRepository>();
+            services.AddTransient<IRepository<Models.System>, SystemRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

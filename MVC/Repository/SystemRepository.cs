@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Repository
 {
-    class SystemRepository : IRepository<Models.System>
+    public class SystemRepository : IRepository<Models.System>
     {
         SolarContext context = new SolarContext();
         public void Add(Models.System item)

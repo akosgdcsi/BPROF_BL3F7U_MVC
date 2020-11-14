@@ -22,29 +22,29 @@ namespace Logic
 
         //crud methods
 
-        public void AddVideo(Star item)
+        public void AddStar(Star item)
         {
             this.starRepo.Add(item);
         }
 
-        public void DeleteVideo(string ID)
+        public void DeleteStar(string ID)
         {
             this.starRepo.Delete(ID);
         }
 
-        public IQueryable<Star> GetAllVideo()
+        public IQueryable<Star> GetAllStar()
         {
             return starRepo.Read();
         }
 
-        public Star GetVideo(string ID)
+        public Star GetStar(string ID)
         {
             return starRepo.Read(ID);
         }
 
-        public void UpdateVideo(string uid, Star newitem)
+        public void UpdateStar(string ID, Star newitem)
         {
-            starRepo.Update(uid, newitem);
+            starRepo.Update(ID, newitem);
         }
     }
 }
