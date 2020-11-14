@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Models
@@ -13,11 +14,15 @@ namespace Models
     {
         [Key]
         public string PlanetID { get; set; }
+        
         [StringLength(200)]
         public string Name { get; set; }
         public PlanetType PlanetType { get; set; }
         public bool Habitable { get; set; }
         public int Population { get; set; }
+        public string StarID { get; set; }
+        [NotMapped]
+        public virtual Star Star { get; set; }
 
     }
 }
