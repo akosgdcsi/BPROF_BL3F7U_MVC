@@ -52,13 +52,17 @@ namespace MVC.Controllers
 
             return View(nameof(UpdateSystem), systemLogic.GetSystem(id));
         }
-
+        
         [HttpPost]
-
         public IActionResult UpdateSystem(Models.System s)
         {
             systemLogic.UpdateSystem(s.SystemID, s);
 
+            return View(nameof(ListSystem), systemLogic.GetAllSystem());
+        }
+        public IActionResult DeleteSystem(string id)
+        {
+            systemLogic.DeleteSystem(id);
             return View(nameof(ListSystem), systemLogic.GetAllSystem());
         }
         //Star
@@ -96,6 +100,11 @@ namespace MVC.Controllers
 
             return View(nameof(ListStar), starLogic.StarToSystem(s.SystemID));
         }
+        public IActionResult DeleteStar(string id)
+        {
+            starLogic.DeleteStar(id);
+            return View(nameof(ListStar), starLogic.GetAllStar());
+        }
         //Planet
         public IActionResult AddPlanet()
         {
@@ -131,5 +140,11 @@ namespace MVC.Controllers
 
             return View(nameof(ListPlanet), planetLogic.PlanetToStar(p.StarID));
         }
+        public IActionResult DelatePlanet(string id)
+        {
+            planetLogic.DeletePlanet(id);
+            return View(nameof(ListPlanet), systemLogic.GetAllSystem());
+        }
+        //Generate Data
     }
 }
