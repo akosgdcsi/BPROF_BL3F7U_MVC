@@ -29,11 +29,11 @@ namespace Data
 
             modelBuilder.Entity<Planet>(entitiy =>
             {
-                entitiy.HasOne(planet => planet.Star).WithMany(star => star.Planets).HasForeignKey(planet => planet.StarID);
+                entitiy.HasOne(planet => planet.Star).WithMany(star => star.Planets).HasForeignKey(planet => planet.StarID).OnDelete(DeleteBehavior.Cascade);
             });
             modelBuilder.Entity<Star>(entitiy =>
             {
-                entitiy.HasOne(star => star.System).WithMany(system => system.Stars).HasForeignKey(star => star.SystemID);
+                entitiy.HasOne(star => star.System).WithMany(system => system.Stars).HasForeignKey(star => star.SystemID).OnDelete(DeleteBehavior.Cascade);
             });
         }
         public DbSet<Planet> Planets { get; set; }
