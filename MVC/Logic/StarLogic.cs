@@ -46,5 +46,13 @@ namespace Logic
         {
             starRepo.Update(ID, newitem);
         }
+        public IQueryable<Star> StarToSystem(string id)
+        {
+
+            var q = starRepo.Read().Select(x => x).Where(x => x.SystemID == id);
+
+            return q.AsQueryable();
+
+        }
     }
 }

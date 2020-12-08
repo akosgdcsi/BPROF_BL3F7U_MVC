@@ -44,5 +44,14 @@ namespace Logic
         {
             planetRepo.Update(ID, newitem);
         }
+
+        public IQueryable<Planet> PlanetToStar(string id)
+        {
+
+            var q = planetRepo.Read().Select(x => x).Where(x => x.StarID == id);
+
+            return q.AsQueryable();
+
+        }
     }
 }
