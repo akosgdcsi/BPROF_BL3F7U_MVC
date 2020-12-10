@@ -20,7 +20,7 @@ namespace MVC
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(opt => opt.EnableEndpointRouting = false);
+            services.AddMvc(opt => opt.EnableEndpointRouting = false).AddRazorRuntimeCompilation();
             services.AddTransient<PlanetLogic, PlanetLogic>();
             services.AddTransient<StarLogic, StarLogic>();
             services.AddTransient<SystemLogic, SystemLogic>();
@@ -38,7 +38,7 @@ namespace MVC
             }
 
             app.UseRouting();
-
+            app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
     }

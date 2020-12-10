@@ -46,19 +46,6 @@ namespace Logic
         {
             systemRepo.Update(ID, newitem);
         }
-        
 
-        //public void FillDbWithSamples()
-        //{
-        //    Planet p1 = new Planet() { Name = "Earth", Habitable = true, Population = 80000, PlanetType = PlanetType.Terran, PlanetID = Guid.NewGuid().ToString() };
-        //    Planet p2 = new Planet() { Name = "Mars", Habitable = true, Population = 1, PlanetType = PlanetType.Subterran, PlanetID = Guid.NewGuid().ToString() };
-        //    Planet p3 = new Planet() { Name = "Venus", Habitable = false, Population = 0, PlanetType = PlanetType.Miniterran, PlanetID = Guid.NewGuid().ToString() };
-        //    Planet p4 = new Planet() { Name = "Merkur", Habitable = false, Population = 0, PlanetType = PlanetType.Jovian, PlanetID = Guid.NewGuid().ToString() };
-        //    Planet p5 = new Planet() { Name = "Neptunus", Habitable = false, Population = 0, PlanetType = PlanetType.Neptunian, PlanetID = Guid.NewGuid().ToString() };
-
-        //    Star s1 = new Star() { Name = "Our Sun", Age = 10, StarType = StarType.Orange_Dwarfs, StarID = Guid.NewGuid().ToString() };
-
-
-        //}
     }
 }
