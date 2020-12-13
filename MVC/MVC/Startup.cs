@@ -24,6 +24,7 @@ namespace MVC
             services.AddTransient<PlanetLogic, PlanetLogic>();
             services.AddTransient<StarLogic, StarLogic>();
             services.AddTransient<SystemLogic, SystemLogic>();
+            services.AddTransient<StatsLogic, StatsLogic>();
             services.AddTransient<IRepository<Planet>, PlanetRepository>();
             services.AddTransient<IRepository<Star>, StarRepository>();
             services.AddTransient<IRepository<Models.System>, SystemRepository>();
