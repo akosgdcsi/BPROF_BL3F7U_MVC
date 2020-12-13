@@ -48,12 +48,12 @@ namespace Repository
             olditem.Name = newitem.Name;
             olditem.StarType = newitem.StarType;
             olditem.Age = newitem.Age;
-
-            olditem.Planets.Clear();
-            foreach (var item in newitem.Planets)
-            {
-                olditem.Planets.Add(item);
-            }
+            olditem.Planets = newitem.Planets;
+            //olditem.Planets.Clear();
+            //foreach (var item in newitem.Planets)
+            //{
+            //    olditem.Planets.Add(item);
+            //}
 
             context.SaveChanges();
         }

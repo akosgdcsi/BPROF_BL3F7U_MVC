@@ -47,13 +47,13 @@ namespace Repository
             var olditem = Read(oldID);
             olditem.Name = newitem.Name;
             olditem.SectorName = newitem.SectorName;
-            
+            olditem.Stars = newitem.Stars;
 
-            olditem.Stars.Clear();
-            foreach (var item in newitem.Stars)
-            {
-                olditem.Stars.Add(item);
-            }
+            //olditem.Stars.Clear();
+            //foreach (var item in newitem.Stars)
+            //{
+            //    olditem.Stars.Add(item);
+            //}
 
             context.SaveChanges();
         }
