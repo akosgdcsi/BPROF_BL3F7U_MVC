@@ -15,6 +15,13 @@ namespace Models
         [StringLength(200)]
         public string SectorName { get; set; }
         public virtual ICollection<Star> Stars { get; set; }
-
+        public override bool Equals(object obj)
+        {
+            return (obj as System).SystemID == this.SystemID;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

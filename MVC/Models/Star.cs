@@ -23,6 +23,13 @@ namespace Models
         [NotMapped]
         public virtual System System { get; set; }
         public virtual ICollection<Planet> Planets { get; set; }
-
+        public override bool Equals(object obj)
+        {
+            return (obj as Star).StarID == this.StarID;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();  
+        }
     }
 }

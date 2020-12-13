@@ -24,5 +24,13 @@ namespace Models
         [NotMapped]
         public virtual Star Star { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            return (obj as Planet).PlanetID == this.PlanetID;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
