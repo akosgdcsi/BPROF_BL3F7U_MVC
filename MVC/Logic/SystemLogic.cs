@@ -46,6 +46,9 @@ namespace Logic
         {
             systemRepo.Update(ID, newitem);
         }
-
+        public IQueryable<Star> GetStar(string ID)
+        {
+            return systemRepo.Read(ID).Stars.AsQueryable();
+        }
     }
 }

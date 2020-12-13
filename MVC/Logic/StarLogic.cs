@@ -54,5 +54,9 @@ namespace Logic
             return q.AsQueryable();
 
         }
+        public IQueryable<Planet> GetPlanet(string ID)
+        {
+            return starRepo.Read(ID).Planets.AsQueryable();
+        }
     }
 }
