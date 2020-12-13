@@ -1,0 +1,46 @@
+﻿@model Models.Star
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update star</title>
+</head>
+<body>
+    <a href="/">Back to the home page</a>
+    <div>
+
+        <h1>Star Update</h1>
+
+        <div>
+            <form action="/Home/UpdateStar" method="post">
+
+                <input type="hidden" name="StarID" value="@Model.StarID" />
+                <br />
+                <p>Name:</p>
+                <input type="text" name="Name" value="@Model.Name" />
+                <br />
+                <P>Star type</P>
+                <br /><label>@Model.StarType</label>>
+                <select type="text">
+                    <option value="Blue_Stars">Blue Star</option>
+                    <option value="Yellow_Dwarfs">Yellow Dwarf</option>
+                    <option value="Orange_Dwarfs">Orange Dwarf</option>
+                    <option value="Red_Dwarfs">Red_Dwarfs</option>
+                    <option value="White_Dwarfs">White Dwarf</option>
+                    <option value="Red_Giants">Red Giants</option>
+                    <option value="Blue_Giants">Blue Giant</option>
+                </select>
+                <br />
+                <p>Age:</p>
+                <input type="number" name="Age" value="@Model.Age" />
+                <br />
+                <input type="hidden" name="SystemID" value="@Model.SystemID" />
+                <input type="submit" value="Send" />
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@model Models.System
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update system</title>
+</head>
+<body>
+    <a href="/">Back to the home page</a>
+    <div >
+
+        <h1>System Update</h1>
+
+        <div >
+            <form action="/Home/UpdateSystem" method="post">
+
+                <input type="hidden" name="SystemID" value="@Model.SystemID" />
+                <br />
+                <p>Name:</p>
+                <input type="text" name="Name" value="@Model.Name" />
+                <br />
+                <p>Sector name:</p>
+                <input type="text" name="SectorName" value="@Model.SectorName" />
+                
+                <input type="submit" value="Send" />
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

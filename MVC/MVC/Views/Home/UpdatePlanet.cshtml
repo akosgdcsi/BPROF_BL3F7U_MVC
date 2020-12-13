@@ -1,0 +1,49 @@
+﻿@model Models.Planet
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Planet</title>
+</head>
+<body>
+    <a href="/">Back to the home page</a>
+    <div>
+
+        <h1>Planet Update</h1>
+
+        <div>
+            <form action="/Home/UpdatePlanet" method="post">
+
+                <input type="hidden" name="PlanetID" value="@Model.PlanetID" />
+                <br />
+                <p>Name:</p>
+                <input type="text" name="Name" value="@Model.Name" />
+                <br />
+                <P>Planet type</P>
+                <br />
+                <select type="text">
+                    <option value="Miniterran">Miniterran</option>
+                    <option value="Subterran">Subterran</option>
+                    <option value="Terran">Terran</option>
+                    <option value="Superterran">Superterran</option>
+                    <option value="Neptunian">Neptunian</option>
+                    <option value="Jovian">Jovian</option>
+                </select>
+                <br />
+                <p>Habitable:</p>
+                <input type="checkbox" name="Habitable" value="@Model.Habitable" />
+                <br />
+                <br />
+                <p>Population:</p>
+                <input type="number" name="Population" value="@Model.Population" />
+                <br />
+                <input type="hidden" name="StarID" value="@Model.StarID" />
+                <input type="submit" value="Send" />
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
