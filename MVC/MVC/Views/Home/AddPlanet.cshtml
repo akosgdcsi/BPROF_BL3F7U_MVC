@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model string
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
 </head>
 <body>
     <form action="/Home/AddPlanet" method="post">
+        <input type="hidden" name="StarID" value="@Model" />
         <br />
         name:
         <br />
@@ -14,7 +16,7 @@
         <br />
         StarType:
         <br />
-        <select type="text">
+        <select type="text" name="PlanetType">
             <option value="Miniterran">Miniterran</option>
             <option value="Subterran">Subterran</option>
             <option value="Terran">Terran</option>
@@ -23,10 +25,15 @@
             <option value="Jovian">Jovian</option>
         </select>
         <br />
+        Habitable:
+        <br />
+        <input type="checkbox" value="true" name="Habitable" /><br />
+        <br />
         Population:
         <br />
         <input type="number" name="Population" />
         <br />
+        <input type="submit" value="Send" />
     </form>
 </body>
 </html>

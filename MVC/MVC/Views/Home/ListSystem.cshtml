@@ -12,9 +12,7 @@
     <title>ListSystem</title>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -39,9 +37,16 @@
                 @Html.DisplayFor(modelItem => item.SectorName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                <a href="/Home/AddStar?id=@item.SystemID">Add Star</a>
+                <br />
+                <a href="/Home/SystemToStarList?id=@item.SystemID">System's stars</a>
+                <br />
+                <a href="/Home/UpdateSystem?id=@item.">Update System</a>
+                <br />
+                <a href="/Home/DeleteSystem?id=@item.SystemID">Delete</a>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("DeleteSystem", "DeleteSystem", new { id=item.SystemID})
+                @Html.ActionLink("DeleteSystem", "DeleteSystem", new { id = item.SystemID })*@
             </td>
         </tr>
 }

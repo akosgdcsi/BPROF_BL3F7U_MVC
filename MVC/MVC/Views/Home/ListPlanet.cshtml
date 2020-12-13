@@ -57,9 +57,14 @@
                 @Html.DisplayFor(modelItem => item.StarID)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                
+                <a href="/Home/UpdatePlanet?id=@item.PlanetID">Update Planet</a>
+                <br />
+                <a href="/Home/DeletePlanet?id=@item.PlanetID">Delete</a>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("DeletePlanet", "DeletePlanet", new { id = item.PlanetID})
+                @Html.ActionLink("DeletePlanet", "DeletePlanet", new { id = item.PlanetID })*@
+
             </td>
         </tr>
 }

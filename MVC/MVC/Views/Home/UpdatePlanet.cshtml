@@ -22,7 +22,7 @@
                 <br />
                 <P>Planet type</P>
                 <br />
-                <select type="text">
+                <select type="text" name="PlanetType">
                     <option value="Miniterran">Miniterran</option>
                     <option value="Subterran">Subterran</option>
                     <option value="Terran">Terran</option>
@@ -31,9 +31,17 @@
                     <option value="Jovian">Jovian</option>
                 </select>
                 <br />
-                <p>Habitable:</p>
-                <input type="checkbox" name="Habitable" value="@Model.Habitable" />
+                Habitable:
                 <br />
+                @if (Model.Habitable)
+                {
+                    <input type="checkbox" value="true" name="Habitable" checked /><br />
+                }
+                else
+                {
+                    <input type="checkbox" value="true" name="Habitable" /><br />
+                }
+
                 <br />
                 <p>Population:</p>
                 <input type="number" name="Population" value="@Model.Population" />

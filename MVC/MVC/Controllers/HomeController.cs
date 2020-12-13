@@ -14,12 +14,14 @@ namespace MVC.Controllers
         PlanetLogic planetLogic;
         StarLogic starLogic;
         SystemLogic systemLogic;
+        StatsLogic statsLogic;
 
-        public HomeController(PlanetLogic planetLogic, StarLogic starLogic, SystemLogic systemLogic)
+        public HomeController(PlanetLogic planetLogic, StarLogic starLogic, SystemLogic systemLogic, StatsLogic statsLogic)
         {
             this.planetLogic = planetLogic;
             this.starLogic = starLogic;
             this.systemLogic = systemLogic;
+            this.statsLogic = statsLogic;
         }
 
         public IActionResult Index()
@@ -30,6 +32,7 @@ namespace MVC.Controllers
         //System 
         public IActionResult AddSystem()
         {
+            ;
             return View();
         }
         [HttpPost]
@@ -46,7 +49,12 @@ namespace MVC.Controllers
 
             return View(systemLogic.GetAllSystem());
         }
+        [HttpGet]
+        public IActionResult SystemToStarList(string id)
+        {
 
+            return View(nameof(ListStar), systemLogic.GetStar(id));
+        }
         [HttpGet]
         public IActionResult UpdateSystem(string id)
         {
@@ -68,9 +76,9 @@ namespace MVC.Controllers
         }
         //Star
         [HttpGet]
-        public IActionResult AddStar()
+        public IActionResult AddStar(string id)
         {
-            return View();
+            return View(nameof(AddStar),id);
         }
         [HttpPost]
         public IActionResult AddStar(Star s)
@@ -78,7 +86,19 @@ namespace MVC.Controllers
             s.StarID = Guid.NewGuid().ToString();
 
             starLogic.AddStar(s);
-            return RedirectToAction(nameof(ListStar));
+            return RedirectToAction(nameof(ListStar),systemLogic.GetStar(s.SystemID));
+        }
+        [HttpGet]
+        public IActionResult StarToPlanetList(string id)
+        {
+
+            return View(nameof(ListPlanet), starLogic.GetPlanet(id));
+        }
+        [HttpGet]
+        public IActionResult ListAllStar()
+        {
+
+            return View(starLogic.GetAllStar());
         }
         [HttpGet]
         public IActionResult ListStar()
@@ -107,9 +127,9 @@ namespace MVC.Controllers
             return View(nameof(ListStar), starLogic.GetAllStar());
         }
         //Planet
-        public IActionResult AddPlanet()
+        public IActionResult AddPlanet(string id)
         {
-            return View();
+            return View(nameof(AddPlanet),id);
         }
         [HttpPost]
         public IActionResult AddPlanet(Planet p)
@@ -120,12 +140,19 @@ namespace MVC.Controllers
             return RedirectToAction(nameof(ListPlanet));
         }
         [HttpGet]
+        public IActionResult ListAllPlanet()
+        {
+
+            return View(planetLogic.GetAllPlanet());
+        }
+
+        [HttpGet]
         public IActionResult ListPlanet()
         {
 
             return View(planetLogic.GetAllPlanet());
         }
-        
+
         [HttpGet]
         public IActionResult UpdatePlanet(string id)
         {
@@ -233,6 +260,31 @@ namespace MVC.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+
+        //non crud
+        public IActionResult Stats()
+        {
+            Models.Stats s = new Models.Stats();
+            
+            List<Star> fapados = statsLogic.StarsWithLife().ToList();
+
+            foreach (var item in fapados)
+            {
+                s.StarsWithLife += item.Name + ",\t";
+            }
+         
+            foreach (var item in statsLogic.PopulationInSectors())
+            {
+                s.PopulationInSectors += item.SectorType + " " + item.Population + "\n";
+            }
+
+           
+            foreach (var item in statsLogic.PlanetTypeGrouped())
+            {
+                s.PlanetTypeGrouped += item.Type + ": \t" + item.NumberOfStars;
+            }
+            return View(s);
         }
     }
 }

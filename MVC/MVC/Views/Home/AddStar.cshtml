@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model string
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,7 @@
 </head>
 <body>
     <form action="/Home/AddStar" method="post">
+        <input type="hidden" name="SystemID" value="@Model" />
         <br />
         name:
         <br />
@@ -14,7 +16,7 @@
         <br />
         StarType:
         <br />
-        <select type="text">
+        <select type="text" name="StarType">
             <option value="Blue_Stars">Blue Star</option>
             <option value="Yellow_Dwarfs">Yellow Dwarf</option>
             <option value="Orange_Dwarfs">Orange Dwarf</option>
