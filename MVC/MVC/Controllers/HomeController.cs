@@ -267,23 +267,10 @@ namespace MVC.Controllers
         {
             Models.Stats s = new Models.Stats();
             
-            List<Star> fapados = statsLogic.StarsWithLife().ToList();
-
-            foreach (var item in fapados)
-            {
-                s.StarsWithLife += item.Name + ",\t";
-            }
-         
-            foreach (var item in statsLogic.PopulationInSectors())
-            {
-                s.PopulationInSectors += item.SectorType + " " + item.Population + "\n";
-            }
-
-           
-            foreach (var item in statsLogic.PlanetTypeGrouped())
-            {
-                s.PlanetTypeGrouped += item.Type + ": \t" + item.NumberOfStars;
-            }
+            
+            s.StarsWithLife = statsLogic.StarsWithLife();
+            s.PopulationInSectors = statsLogic.PopulationInSectors();
+            s.PlanetTypeGrouped = statsLogic.PlanetTypeGrouped();
             return View(s);
         }
     }

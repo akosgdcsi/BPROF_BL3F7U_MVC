@@ -9,10 +9,23 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Stars with Life: @Model.StarsWithLife</p>
-    <p>@Model.PopulationInSectors</p>
-    <p>@Model.PlanetTypeGrouped</p>
 
-    
+    <p>Stars that have habitable planet:</p>
+    @foreach (var item in Model.StarsWithLife)
+    {
+        <p>@Html.DisplayFor(modelItem => item.Name)</p>
+    }
+    <br />
+    <p>Population in Sectors:</p>
+    @foreach (var item in Model.PopulationInSectors)
+    {
+        <p>@Html.DisplayFor(modelItem => item.SectorType): @Html.DisplayFor(modelItem => item.Population)</p>
+    }
+    <br />
+    <p>planat type stars:</p>
+    @foreach (var item in Model.PlanetTypeGrouped)
+    {
+        <p>@Html.DisplayFor(modelItem => item.Type): @Html.DisplayFor(modelItem => item.NumberOfStars)</p>
+    }
 </body>
 </html>

@@ -7,8 +7,8 @@ namespace Models
 {
     public class Stats
     {
-        public string StarsWithLife { get; set; }
-        public string PopulationInSectors { get; set; }
-        public string PlanetTypeGrouped { get; set; }
+        public IEnumerable<Star> StarsWithLife { get; set; }
+        public IEnumerable<PopulationInSec> PopulationInSectors { get; set; }
+        public IEnumerable<PlanetTypeGrouped> PlanetTypeGrouped { get; set; }
     }
 }
