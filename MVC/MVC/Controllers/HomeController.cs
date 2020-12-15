@@ -58,7 +58,6 @@ namespace MVC.Controllers
         [HttpGet]
         public IActionResult UpdateSystem(string id)
         {
-
             return View(nameof(UpdateSystem), systemLogic.GetSystem(id));
         }
         
@@ -265,7 +264,7 @@ namespace MVC.Controllers
         //non crud
         public IActionResult Stats()
         {
-            Models.Stats s = new Models.Stats();
+            Stats s = new Stats();
             
             
             s.StarsWithLife = statsLogic.StarsWithLife();

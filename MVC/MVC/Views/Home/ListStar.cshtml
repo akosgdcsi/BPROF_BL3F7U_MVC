@@ -10,61 +10,61 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>ListStar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/CSS/List.css" type="text/css">
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
+    <a class="nav-link" style="color: #FFF842" href="/">back to homepage</a>
+    <h1>Stars Listed</h1>
+    <table class="container">
+        <thead>
+            <tr>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StarType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Age)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SystemID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StarType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SystemID)
+                </th>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StarType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SystemID)
-            </td>
-            <td>
-                <a href="/Home/AddPlanet?id=@item.StarID">Add Planet</a>
-                <br />
-                <a href="/Home/StarToPlanetList?id=@item.StarID">Star's planets</a>
-                <br />
-                <a href="/Home/UpdateStar?id=@item.StarID">Update Star</a>
-                <br />
-                <a href="/Home/DeleteStar?id=@item.StarID">Delete</a>
-                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("DeleteStar", "DeleteStar", new { id = item.StarID })*@
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StarType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SystemID)
+                    </td>
+                    <td>
+                        <a href="/Home/AddPlanet?id=@item.StarID">Add Planet</a>
+                        <br />
+                        <a href="/Home/StarToPlanetList?id=@item.StarID">Star's planets</a>
+                        <br />
+                        <a href="/Home/UpdateStar?id=@item.StarID">Update Star</a>
+                        <br />
+                        <a href="/Home/DeleteStar?id=@item.StarID">Delete</a>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>

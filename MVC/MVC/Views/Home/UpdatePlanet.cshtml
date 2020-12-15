@@ -4,25 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="/CSS/Form.css" rel="stylesheet" />
     <title>Update Planet</title>
 </head>
 <body>
-    <a href="/">Back to the home page</a>
-    <div>
-
-        <h1>Planet Update</h1>
-
-        <div>
+    <a class="nav-link" style="color: #FFF842" href="/Home/ListStar">back to list</a>
+    <h1>Planet Update</h1>
+    <div class="place">
+        <div id="text">
             <form action="/Home/UpdatePlanet" method="post">
 
                 <input type="hidden" name="PlanetID" value="@Model.PlanetID" />
+                <h2>Name:</h2>
+                <input class="mb-3" type="text" name="Name" value="@Model.Name" />
                 <br />
-                <p>Name:</p>
-                <input type="text" name="Name" value="@Model.Name" />
-                <br />
-                <P>Planet type</P>
-                <br />
-                <select type="text" name="PlanetType">
+                <h2>Planet Type:</h2>
+                <select class="form-select-lg mb-3" type="text" name="PlanetType">
                     <option value="Miniterran">Miniterran</option>
                     <option value="Subterran">Subterran</option>
                     <option value="Terran">Terran</option>
@@ -31,23 +29,28 @@
                     <option value="Jovian">Jovian</option>
                 </select>
                 <br />
-                Habitable:
-                <br />
+                <h2>Habitable:</h2>
                 @if (Model.Habitable)
                 {
-                    <input type="checkbox" value="true" name="Habitable" checked /><br />
+                    @*<input type="checkbox" value="true" name="Habitable" checked /><br />*@
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" id="flexSwitchCheckDefault" type="checkbox" value="true" name="Habitable" checked />
+                    </div>
                 }
                 else
                 {
-                    <input type="checkbox" value="true" name="Habitable" /><br />
+                    @*<input type="checkbox" value="true" name="Habitable" /><br />*@
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" id="flexSwitchCheckDefault" type="checkbox" value="true" name="Habitable" />
+                    </div>
                 }
 
                 <br />
-                <p>Population:</p>
-                <input type="number" name="Population" value="@Model.Population" />
+                <h2>Population:</h2>
+                <input class="mb-3" type="number" name="Population" value="@Model.Population" />
                 <br />
                 <input type="hidden" name="StarID" value="@Model.StarID" />
-                <input type="submit" value="Send" />
+                <input class="action-button" type="submit" value="Send" />
 
             </form>
         </div>

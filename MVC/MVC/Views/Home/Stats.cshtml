@@ -6,26 +6,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="/CSS/Stats.css" rel="stylesheet" />
+    <title>Statistics</title>
 </head>
 <body>
+    <a class="nav-link" style="color: #FFF842" href="/">back to home page</a>
+    <div class="space">
+        <H1>Stars that have habitable planet:</H1>
+        <H2>
+            <span></span>
+            @foreach (var item in Model.StarsWithLife)
+            {
+                <span> @Html.DisplayFor(modelItem => item.Name) </span>
 
-    <p>Stars that have habitable planet:</p>
-    @foreach (var item in Model.StarsWithLife)
-    {
-        <p>@Html.DisplayFor(modelItem => item.Name)</p>
-    }
-    <br />
-    <p>Population in Sectors:</p>
-    @foreach (var item in Model.PopulationInSectors)
-    {
-        <p>@Html.DisplayFor(modelItem => item.SectorType): @Html.DisplayFor(modelItem => item.Population)</p>
-    }
-    <br />
-    <p>planat type stars:</p>
-    @foreach (var item in Model.PlanetTypeGrouped)
-    {
-        <p>@Html.DisplayFor(modelItem => item.Type): @Html.DisplayFor(modelItem => item.NumberOfStars)</p>
-    }
+            }
+        </H2>
+        <br />
+        <H1>Population in Sectors:</H1>
+        @foreach (var item in Model.PopulationInSectors)
+        {
+            <H2><span></span><span>@Html.DisplayFor(modelItem => item.SectorType):</span> <span>@Html.DisplayFor(modelItem => item.Population)</span></H2>
+        }
+        <br />
+        <H1>planet type that has stars older than 1 million years:</H1>
+        @foreach (var item in Model.PlanetTypeGrouped)
+        {
+            <H2><span></span><span>@Html.DisplayFor(modelItem => item.Type):</span> <span>@Html.DisplayFor(modelItem => item.NumberOfStars)</span></H2>
+        }
+    </div>
 </body>
 </html>

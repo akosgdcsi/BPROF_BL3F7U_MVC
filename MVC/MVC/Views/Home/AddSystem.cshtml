@@ -4,21 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="/CSS/Form.css" rel="stylesheet" />
     <title>Add system</title>
 </head>
 <body>
-    <form action="/Home/AddSystem" method="post">
-        
-        <br />
-        name:
-        <br />
-        <input type="text" name="name" />
-        <br />
-        Sector Name:
-        <br />
-        <input type="text" name="sectorname" />
-        <br />
-        <input type="submit" value="Send" />
-    </form>
+    <a class="nav-link" style="color: #FFF842" href="/">back to home page</a>
+    <h1>System</h1>
+    <div class="place">
+        <div id="text">
+            <form action="/Home/AddSystem" method="post">
+                <h2>Name:</h2>
+                <input type="text" name="name" />
+                <br />
+                <h2>Sector Name:</h2>
+                <input type="text" name="sectorname" />
+                <br />
+                <br />
+                <input class="action-button" type="submit" value="Send" />
+            </form>
+        </div>
+    </div>
 </body>
 </html>

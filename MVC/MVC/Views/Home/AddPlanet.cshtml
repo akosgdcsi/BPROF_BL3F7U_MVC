@@ -4,36 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="/CSS/Form.css" rel="stylesheet" />
     <title>Add Planet</title>
 </head>
 <body>
-    <form action="/Home/AddPlanet" method="post">
-        <input type="hidden" name="StarID" value="@Model" />
-        <br />
-        name:
-        <br />
-        <input type="text" name="name" />
-        <br />
-        StarType:
-        <br />
-        <select type="text" name="PlanetType">
-            <option value="Miniterran">Miniterran</option>
-            <option value="Subterran">Subterran</option>
-            <option value="Terran">Terran</option>
-            <option value="Superterran">Superterran</option>
-            <option value="Neptunian">Neptunian</option>
-            <option value="Jovian">Jovian</option>
-        </select>
-        <br />
-        Habitable:
-        <br />
-        <input type="checkbox" value="true" name="Habitable" /><br />
-        <br />
-        Population:
-        <br />
-        <input type="number" name="Population" />
-        <br />
-        <input type="submit" value="Send" />
-    </form>
+    <a class="nav-link" style="color: #FFF842" href="/Home/ListStar">back to list</a>
+    <h1>Planet</h1>
+    <div class="place">
+        <div id="text">
+            <form action="/Home/AddPlanet" method="post">
+                <input class="mb-3" type="hidden" name="StarID" value="@Model" />
+                <br />
+                <h2>Name:</h2>
+                <input class="mb-3" type="text" name="name" />
+                <br />
+                <h2>Planet Type:</h2>
+                <select class="form-select-lg mb-3" type="text" name="PlanetType">
+                    <option value="Miniterran">Miniterran</option>
+                    <option value="Subterran">Subterran</option>
+                    <option value="Terran">Terran</option>
+                    <option value="Superterran">Superterran</option>
+                    <option value="Neptunian">Neptunian</option>
+                    <option value="Jovian">Jovian</option>
+                </select>
+                <br />
+                <h2>Habitable:</h2>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" id="flexSwitchCheckDefault" type="checkbox" value="true" name="Habitable" />
+                </div>
+                <br />
+                <h2>Population:</h2>
+                <input class="mb-3" type="number" name="Population" />
+                <br />
+                <br />
+                <input class="action-button" type="submit" value="Send" />
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
