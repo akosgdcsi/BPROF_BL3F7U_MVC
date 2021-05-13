@@ -22,6 +22,7 @@ namespace Models
         public bool Habitable { get; set; }
         public int Population { get; set; }
         public string StarID { get; set; }
+        
         [NotMapped]
         [JsonIgnore]
         public virtual Star Star { get; set; }

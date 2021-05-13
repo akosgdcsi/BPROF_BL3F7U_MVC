@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,7 +22,9 @@ namespace Models
         public int Age { get; set; }
         public string SystemID { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual System System { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Planet> Planets { get; set; }
         public override bool Equals(object obj)
         {

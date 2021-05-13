@@ -18,7 +18,7 @@ namespace WebApi.Controllers
             this.planetLogic = planetLogic;
         }
 
-        [HttpGet]
+        [HttpGet("/GetPlanet/{id}")]
         public ActionResult<Planet> GetPlanet(string id)
         {
             try
@@ -45,6 +45,20 @@ namespace WebApi.Controllers
             catch (Exception ex)
             {
 
+                return StatusCode(500, $"Internal server error : {ex}");
+            }
+        }
+
+        [HttpGet("/GetAllPlanets")]
+        public ActionResult<IEnumerable<Planet>> GetAllPlanet()
+        {
+            try
+            {
+                var planets = planetLogic.GetAllPlanet();
+                return Ok(planets);
+            }
+            catch (Exception ex)
+            {
                 return StatusCode(500, $"Internal server error : {ex}");
             }
         }
