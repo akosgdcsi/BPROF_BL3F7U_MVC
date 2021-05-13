@@ -18,6 +18,21 @@ namespace WebApi.Controllers
             this.planetLogic = planetLogic;
         }
 
+        [HttpGet]
+        public ActionResult<Planet> GetPlanet(string id)
+        {
+            try
+            {
+                var planet = planetLogic.GetPlanet(id);
+                return Ok(planet);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error : {ex}");
+            }
+        }
+
+
         [HttpPost("/AddPlanet")]
         public IActionResult AddPlanet([FromBody] Planet planet)
         {
