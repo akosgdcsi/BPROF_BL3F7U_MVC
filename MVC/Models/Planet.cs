@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +23,7 @@ namespace Models
         public int Population { get; set; }
         public string StarID { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual Star Star { get; set; }
 
         public override bool Equals(object obj)
