@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Models
 {
@@ -24,6 +24,7 @@ namespace Models
         public string StarID { get; set; }
         
         [NotMapped]
+        [Newtonsoft.Json.JsonIgnore]
         [JsonIgnore]
         public virtual Star Star { get; set; }
 

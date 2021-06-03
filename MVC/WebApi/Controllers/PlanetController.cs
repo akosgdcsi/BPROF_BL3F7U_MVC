@@ -62,5 +62,38 @@ namespace WebApi.Controllers
                 return StatusCode(500, $"Internal server error : {ex}");
             }
         }
+
+        [HttpDelete("/DeletePlanet")]
+        public IActionResult DeletePlanet(string id)
+        {
+            try
+            {
+
+                planetLogic.DeletePlanet(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, $"Internal server error : {ex}");
+            }
+        }
+        
+        [HttpPost("/UpdatePlanet")]
+        public IActionResult UpdatePlanet([FromBody] Planet planet)
+        {
+            try
+            {
+                
+                planetLogic.UpdatePlanet(planet.PlanetID,planet);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, $"Internal server error : {ex}");
+            }
+        }
+
     }
 }
