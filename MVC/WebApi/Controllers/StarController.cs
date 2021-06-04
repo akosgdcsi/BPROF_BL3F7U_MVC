@@ -1,4 +1,5 @@
 ﻿using Logic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 using System;
@@ -8,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
+    [Route("Star")]
     [ApiController]
-    [Route("Planet")]
-    public class PlanetController : ControllerBase
+    public class StarController : ControllerBase
     {
-        PlanetLogic planetLogic;
-        public PlanetController(PlanetLogic planetLogic)
+        StarLogic starlogic;
+        public StarController(StarLogic starlogic)
         {
-            this.planetLogic = planetLogic;
+            this.starlogic = starlogic;
         }
 
-        [HttpGet("/GetPlanet/{id}")]
-        public ActionResult<Planet> GetPlanet(string id)
+        [HttpGet("/GetStar/{id}")]
+        public ActionResult<Star> GetStar(string id)
         {
             try
             {
-                var planet = planetLogic.GetPlanet(id);
-                return Ok(planet);
+                var star = starlogic.GetStar(id);
+                return Ok(star);
             }
             catch (Exception ex)
             {
@@ -33,12 +34,12 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpPost("/AddPlanet")]
-        public IActionResult AddPlanet([FromBody] Planet planet)
+        [HttpPost("/AddStar")]
+        public IActionResult AddStar([FromBody] Star star)
         {
             try
             {
-                planetLogic.AddPlanet(planet);
+                starlogic.AddStar(star);
                 return Ok();
             }
             catch (Exception ex)
@@ -48,13 +49,13 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("/GetAllPlanets")]
-        public ActionResult<IEnumerable<Planet>> GetAllPlanet()
+        [HttpGet("/GetAllStars")]
+        public ActionResult<IEnumerable<Planet>> GetAllStar()
         {
             try
             {
-                var planets = planetLogic.GetAllPlanet();
-                return Ok(planets);
+                var star = starlogic.GetAllStar();
+                return Ok(star);
             }
             catch (Exception ex)
             {
@@ -62,29 +63,13 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("/DeletePlanet")]
-        public IActionResult DeletePlanet(string id)
+        [HttpDelete("/DeleteStar")]
+        public IActionResult DeleteStar(string id)
         {
             try
             {
 
-                planetLogic.DeletePlanet(id);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-
-                return StatusCode(500, $"Internal server error : {ex}");
-            }
-        }
-        
-        [HttpPost("/UpdatePlanet")]
-        public IActionResult UpdatePlanet([FromBody] Planet planet)
-        {
-            try
-            {
-                
-                planetLogic.UpdatePlanet(planet.PlanetID,planet);
+                starlogic.DeleteStar(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -94,5 +79,20 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpPost("/UpdateStar")]
+        public IActionResult UpdateStar([FromBody] Star star)
+        {
+            try
+            {
+
+                starlogic.UpdateStar(star.StarID, star);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, $"Internal server error : {ex}");
+            }
+        }
     }
 }

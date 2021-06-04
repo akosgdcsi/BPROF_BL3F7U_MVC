@@ -14,6 +14,7 @@ namespace Models
     public class Planet
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string PlanetID { get; set; }
         
         [StringLength(200)]

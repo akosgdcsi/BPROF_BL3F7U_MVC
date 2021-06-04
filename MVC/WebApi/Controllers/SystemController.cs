@@ -1,6 +1,6 @@
 ﻿using Logic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
+    [Route("System")]
     [ApiController]
-    [Route("Planet")]
-    public class PlanetController : ControllerBase
+    public class SystemController : ControllerBase
     {
-        PlanetLogic planetLogic;
-        public PlanetController(PlanetLogic planetLogic)
+        SystemLogic systemLogic;
+        public SystemController(SystemLogic systemLogic)
         {
-            this.planetLogic = planetLogic;
+            this.systemLogic = systemLogic;
         }
 
-        [HttpGet("/GetPlanet/{id}")]
-        public ActionResult<Planet> GetPlanet(string id)
+        [HttpGet("/GetSystem/{id}")]
+        public ActionResult<Models.System> GetSystem(string id)
         {
             try
             {
-                var planet = planetLogic.GetPlanet(id);
-                return Ok(planet);
+                var system = systemLogic.GetSystem(id);
+                return Ok(system);
             }
             catch (Exception ex)
             {
@@ -33,12 +33,12 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpPost("/AddPlanet")]
-        public IActionResult AddPlanet([FromBody] Planet planet)
+        [HttpPost("/AddSystem")]
+        public IActionResult AddSystem([FromBody] Models.System system)
         {
             try
             {
-                planetLogic.AddPlanet(planet);
+                systemLogic.AddSystem(system);
                 return Ok();
             }
             catch (Exception ex)
@@ -48,13 +48,13 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("/GetAllPlanets")]
-        public ActionResult<IEnumerable<Planet>> GetAllPlanet()
+        [HttpGet("/GetAllSystems")]
+        public ActionResult<IEnumerable<Models.System>> GetAllSystem()
         {
             try
             {
-                var planets = planetLogic.GetAllPlanet();
-                return Ok(planets);
+                var systems = systemLogic.GetAllSystem();
+                return Ok(systems);
             }
             catch (Exception ex)
             {
@@ -62,29 +62,13 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("/DeletePlanet")]
-        public IActionResult DeletePlanet(string id)
+        [HttpDelete("/DeleteSystem")]
+        public IActionResult DeleteStar(string id)
         {
             try
             {
 
-                planetLogic.DeletePlanet(id);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-
-                return StatusCode(500, $"Internal server error : {ex}");
-            }
-        }
-        
-        [HttpPost("/UpdatePlanet")]
-        public IActionResult UpdatePlanet([FromBody] Planet planet)
-        {
-            try
-            {
-                
-                planetLogic.UpdatePlanet(planet.PlanetID,planet);
+                systemLogic.DeleteSystem(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -94,5 +78,20 @@ namespace WebApi.Controllers
             }
         }
 
+        [HttpPost("/UpdateSystem")]
+        public IActionResult UpdateStar([FromBody] Models.System system)
+        {
+            try
+            {
+
+                systemLogic.UpdateSystem(system.SystemID, system);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, $"Internal server error : {ex}");
+            }
+        }
     }
 }
