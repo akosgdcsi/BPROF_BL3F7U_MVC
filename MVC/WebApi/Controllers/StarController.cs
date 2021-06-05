@@ -63,7 +63,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("/DeleteStar")]
+        [HttpDelete("/DeleteStar/{id}")]
         public IActionResult DeleteStar(string id)
         {
             try

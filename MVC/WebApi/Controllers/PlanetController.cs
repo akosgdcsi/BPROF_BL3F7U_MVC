@@ -62,7 +62,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("/DeletePlanet")]
+        [HttpDelete("/DeletePlanet/{id}")]
         public IActionResult DeletePlanet(string id)
         {
             try
