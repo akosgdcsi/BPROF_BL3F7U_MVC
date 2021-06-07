@@ -241,9 +241,7 @@ namespace WpfClient
 
         private void SignOut_ButtonClick(object sender, RoutedEventArgs e)
         {
-            MainWindow newMW = new MainWindow();
             this.Close();
-            newMW.Show();
         }
     }
 }
