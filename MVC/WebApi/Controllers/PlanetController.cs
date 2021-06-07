@@ -18,7 +18,7 @@ namespace WebApi.Controllers
             this.planetLogic = planetLogic;
         }
 
-        [HttpGet("/GetPlanet/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<Planet> GetPlanet(string id)
         {
             try
@@ -33,7 +33,7 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpPost("/AddPlanet")]
+        [HttpPost]
         public IActionResult AddPlanet([FromBody] Planet planet)
         {
             try
@@ -48,7 +48,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("/GetAllPlanets")]
+        [HttpGet]
         public ActionResult<IEnumerable<Planet>> GetAllPlanet()
         {
             try
@@ -62,7 +62,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("/DeletePlanet/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeletePlanet(string id)
         {
             try
@@ -78,13 +78,13 @@ namespace WebApi.Controllers
             }
         }
         
-        [HttpPost("/UpdatePlanet")]
-        public IActionResult UpdatePlanet([FromBody] Planet planet)
+        [HttpPut("{id}")]
+        public IActionResult UpdatePlanet(string id,[FromBody] Planet planet)
         {
             try
             {
                 
-                planetLogic.UpdatePlanet(planet.PlanetID,planet);
+                planetLogic.UpdatePlanet(id,planet);
                 return Ok();
             }
             catch (Exception ex)

@@ -12,16 +12,19 @@ namespace WpfClient
     class RestService
     {
         HttpClient client;
+        HttpClientHandler clientHandler;
         string endpoint;
         public RestService(string baseurl, string endpoint, string token = "")
         {
-            client = new HttpClient();
+            clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            client = new HttpClient(clientHandler);
             client.BaseAddress = new Uri(baseurl);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue
                 ("application/json"));
-
+            
             if (token != "")
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);

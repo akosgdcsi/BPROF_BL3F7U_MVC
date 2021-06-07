@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-    [Route("Star")]
+    
     [ApiController]
+    [Route("Star")]
     public class StarController : ControllerBase
     {
         StarLogic starlogic;
@@ -19,7 +20,7 @@ namespace WebApi.Controllers
             this.starlogic = starlogic;
         }
 
-        [HttpGet("/GetStar/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<Star> GetStar(string id)
         {
             try
@@ -34,7 +35,7 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpPost("/AddStar")]
+        [HttpPost]
         public IActionResult AddStar([FromBody] Star star)
         {
             try
@@ -49,7 +50,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("/GetAllStars")]
+        [HttpGet]
         public ActionResult<IEnumerable<Planet>> GetAllStar()
         {
             try
@@ -63,7 +64,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("/DeleteStar/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeleteStar(string id)
         {
             try
@@ -79,13 +80,13 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost("/UpdateStar")]
-        public IActionResult UpdateStar([FromBody] Star star)
+        [HttpPut("{id}")]
+        public IActionResult UpdateStar(string id,[FromBody] Star star)
         {
             try
             {
 
-                starlogic.UpdateStar(star.StarID, star);
+                starlogic.UpdateStar(id, star);
                 return Ok();
             }
             catch (Exception ex)

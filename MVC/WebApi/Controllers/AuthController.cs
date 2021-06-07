@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-    [Route("Auth")]
+    
     [ApiController]
+    [Route("Auth")]
     public class AuthController : ControllerBase
     {
         AuthLogic _authLogic;

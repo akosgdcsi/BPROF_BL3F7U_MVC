@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-    [Route("System")]
+    
     [ApiController]
+    [Route("System")]
     public class SystemController : ControllerBase
     {
         SystemLogic systemLogic;
@@ -18,7 +19,7 @@ namespace WebApi.Controllers
             this.systemLogic = systemLogic;
         }
 
-        [HttpGet("/GetSystem/{id}")]
+        [HttpGet("{id}")]
         public ActionResult<Models.System> GetSystem(string id)
         {
             try
@@ -33,7 +34,7 @@ namespace WebApi.Controllers
         }
 
 
-        [HttpPost("/AddSystem")]
+        [HttpPost]
         public IActionResult AddSystem([FromBody] Models.System system)
         {
             try
@@ -48,7 +49,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("/GetAllSystems")]
+        [HttpGet]
         public ActionResult<IEnumerable<Models.System>> GetAllSystem()
         {
             try
@@ -62,7 +63,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("/DeleteSystem/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeleteStar(string id)
         {
             try
@@ -78,13 +79,13 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpPost("/UpdateSystem")]
-        public IActionResult UpdateStar([FromBody] Models.System system)
+        [HttpPut("{id}")]
+        public IActionResult UpdateStar(string id,[FromBody] Models.System system)
         {
             try
             {
 
-                systemLogic.UpdateSystem(system.SystemID, system);
+                systemLogic.UpdateSystem(id, system);
                 return Ok();
             }
             catch (Exception ex)
