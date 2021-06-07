@@ -30,7 +30,7 @@ namespace WpfClient.UI
         {
             try
             {
-                RestService restService = new RestService("http://localhost:5000/", "/Auth");
+                RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Auth");
                 TokenViewModel tvm = await restService.Put<TokenViewModel, LoginViewModel>(new LoginViewModel()
                 {
                     Username = textbox_username.Text,
@@ -46,7 +46,7 @@ namespace WpfClient.UI
         }
         private void Register_Button_click(object sender, RoutedEventArgs e)
         {
-            RestService restService = new RestService("http://localhost:5000/", "/Auth");
+            RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Auth");
             restService.Post<RegisterViewModel>(new RegisterViewModel()
             {
                 Email = textbox_username.Text,

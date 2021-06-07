@@ -1,4 +1,5 @@
 ﻿using Logic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-    
+    [Authorize]
     [ApiController]
     [Route("Star")]
     public class StarController : ControllerBase

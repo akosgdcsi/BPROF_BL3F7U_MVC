@@ -1,4 +1,5 @@
 ﻿using Logic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-    
+    [Authorize]
     [ApiController]
     [Route("System")]
     public class SystemController : ControllerBase

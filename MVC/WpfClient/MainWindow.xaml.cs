@@ -56,7 +56,7 @@ namespace WpfClient
         private async Task GetStarNames()
         {
             CustomerCbox.ItemsSource = null;
-            RestService restService = new RestService("http://localhost:5000/", "/Star", token);
+            RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Star", token);
             IEnumerable<Star> customernames = await restService.Get<Star>();
 
             CustomerCbox.ItemsSource = customernames;
@@ -76,7 +76,7 @@ namespace WpfClient
         private async Task RefreshPlanetList()
         {
             DGrid1.ItemsSource = null;
-            RestService restService = new RestService("http://localhost:5000/", "/Planet", token);
+            RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Planet", token);
             IEnumerable<Planet> productList = await restService.Get<Planet>();
             DGrid1.ItemsSource = productList;
         }
@@ -108,7 +108,7 @@ namespace WpfClient
             PlanetEditingWindow win = new PlanetEditingWindow();
             if (win.ShowDialog() == true)
             {
-                RestService restService = new RestService("http://localhost:5000/", "/Planet", token);
+                RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Planet", token);
 
                 if (win.Planet.PlanetID == null || win.Planet.PlanetID == string.Empty)
                     win.Planet.PlanetID = Guid.NewGuid().ToString();
@@ -131,7 +131,7 @@ namespace WpfClient
         {
             if (DGrid1.SelectedItem as Planet != null)
             {
-                RestService restService = new RestService("http://localhost:5000/", "/Planet", token);
+                RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Planet", token);
                 restService.Delete<string>((DGrid1.SelectedItem as Planet).PlanetID);
                 MessageBox.Show("Product successfully deleted");
                 await this.GetStarNames();
@@ -150,7 +150,7 @@ namespace WpfClient
                 PlanetEditingWindow win = new PlanetEditingWindow(DGrid1.SelectedItem as Planet);
                 if (win.ShowDialog() == true)
                 {
-                    RestService restService = new RestService("http://localhost:5000/", "/Planet", token);
+                    RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Planet", token);
 
                     if (win.Planet.PlanetID == null || win.Planet.PlanetID == string.Empty)
                         win.Planet.PlanetID = Guid.NewGuid().ToString();
@@ -177,7 +177,7 @@ namespace WpfClient
             StarEditingWindow win = new StarEditingWindow();
             if (win.ShowDialog() == true)
             {
-                RestService restService = new RestService("http://localhost:5000/", "/Star", token);
+                RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Star", token);
 
                 if (win.Star.StarID == null || win.Star.StarID == string.Empty)
                     win.Star.StarID = Guid.NewGuid().ToString();
@@ -201,7 +201,7 @@ namespace WpfClient
                 StarEditingWindow win = new StarEditingWindow(CustomerCbox.SelectedItem as Star);
                 if (win.ShowDialog() == true)
                 {
-                    RestService restService = new RestService("http://localhost:5000/", "/Star", token);
+                    RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Star", token);
 
                     if (win.Star.StarID == null || win.Star.StarID == string.Empty)
                         win.Star.StarID = Guid.NewGuid().ToString();
@@ -227,7 +227,7 @@ namespace WpfClient
         {
             if (CustomerCbox.SelectedItem as Star != null)
             {
-                RestService restService = new RestService("http://localhost:5000/", "/Star", token);
+                RestService restService = new RestService("https://webapi20210607153930.azurewebsites.net/", "/Star", token);
                 restService.Delete<string>((CustomerCbox.SelectedItem as Star).StarID);
                 MessageBox.Show("Star successfully deleted");
                 await this.GetStarNames();
