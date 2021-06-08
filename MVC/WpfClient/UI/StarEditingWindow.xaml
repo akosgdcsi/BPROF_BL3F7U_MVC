@@ -1,0 +1,26 @@
+﻿<Window x:Class="WpfClient.UI.StarEditingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfClient.UI"
+        xmlns:vm="clr-namespace:WpfClient.VM"
+        mc:Ignorable="d"
+        Title="StarEditingWindow" Height="249" Width="353">
+    <Window.Resources>
+        <vm:StarEditVM x:Key="VM"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource VM}">
+        <Label Content="Star name" HorizontalAlignment="Left" Margin="24,30,0,0" VerticalAlignment="Top" Height="26" Width="84"/>
+        <TextBox Text="{Binding Path=Star.Name}" HorizontalAlignment="Left"  Margin="136,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Height="25" />
+
+        <Label Content="StarAge" HorizontalAlignment="Left" Margin="24,70,0,0" VerticalAlignment="Top" Height="26" Width="81"/>
+        <TextBox Text="{Binding Path=Star.Age}" HorizontalAlignment="Left"  Margin="136,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Height="25" />
+
+        <Label Content="Star Type" HorizontalAlignment="Left" Margin="24,110,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
+        <ComboBox ItemsSource="{Binding Path=Stars}" SelectedItem="{Binding Path=Star.StarType}" HorizontalAlignment="Left" Margin="136,110,0,0" VerticalAlignment="Top" Width="194" Height="25"/>
+
+        <Button Content="OK" HorizontalAlignment="Left" Margin="33,158,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Ok_Click"/>
+        <Button Content="CANCEL" HorizontalAlignment="Left" Margin="144,158,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Cancel_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,48 @@
+﻿<Window x:Class="WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="530" Width="800">
+    <Grid>
+        <Label Content="Star:" HorizontalAlignment="Left" Margin="46,27,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CustomerCbox" HorizontalAlignment="Left" Margin="120,29,0,0" VerticalAlignment="Top" Width="291" SelectionChanged="CustomerCbox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Path=Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <DataGrid x:Name="DGrid1" IsReadOnly="True" HorizontalAlignment="Left"
+                  Height="306" Margin="10,67,0,0" VerticalAlignment="Top" Width="751"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Planet Name" Binding="{Binding Path=Name}" />
+                <DataGridTextColumn Header="Planet type" Binding="{Binding Path=PlanetType}" />
+                <DataGridTextColumn Header="Habitable" Binding="{Binding Path=Habitable}" />
+                <DataGridTextColumn Header="Population" Binding="{Binding Path=Population}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Add new planet" HorizontalAlignment="Left"
+                Margin="50,400,0,0" VerticalAlignment="Top" Width="100" Click="AddNewPlanet_ButtonClick" />
+        <Button Content="Edit a planet" HorizontalAlignment="Left"
+                Margin="175,400,0,0" VerticalAlignment="Top" Width="100" Click="EditPlanet_ButtonClick" />
+        <Button Content="Delete a planet" HorizontalAlignment="Left"
+                Margin="300,400,0,0" VerticalAlignment="Top" Width="100" Click="DeletePlanet_ButtonClick" />
+
+        <Button Content="Add new star" HorizontalAlignment="Left"
+                Margin="50,440,0,0" VerticalAlignment="Top" Width="100" Click="AddNewStar_ButtonClick" />
+        <Button Content="Edit a star" HorizontalAlignment="Left"
+                Margin="175,440,0,0" VerticalAlignment="Top" Width="100" Click="EditStar_ButtonClick" />
+        <Button Content="Delete a star" HorizontalAlignment="Left"
+                Margin="300,440,0,0" VerticalAlignment="Top" Width="100" Click="Deletestar_ButtonClick" />
+
+        <Button Content="Refresh" HorizontalAlignment="Left"
+                Margin="425,400,0,0" VerticalAlignment="Top" Width="100" Click="Refresh_Button_Click"/>
+        <Button Content="Clear Selection" HorizontalAlignment="Left" Margin="445,30,0,0" VerticalAlignment="Top" Click="ClearSelection_ButtonClick" Width="95"/>
+
+        <Button Content="Sign out" HorizontalAlignment="Left" Margin="612,442,0,0" VerticalAlignment="Top" Width="149" Height="30" Click="SignOut_ButtonClick"/>
+    </Grid>
+</Window>

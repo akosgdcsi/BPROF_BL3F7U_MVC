@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Models
 {
@@ -13,6 +14,7 @@ namespace Models
     public class Planet
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string PlanetID { get; set; }
         
         [StringLength(200)]
@@ -21,13 +23,16 @@ namespace Models
         public bool Habitable { get; set; }
         public int Population { get; set; }
         public string StarID { get; set; }
+        
         [NotMapped]
+        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public virtual Star Star { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            return (obj as Planet).PlanetID == this.PlanetID;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    return (obj as Planet).PlanetID == this.PlanetID;
+        //}
         public override int GetHashCode()
         {
             return base.GetHashCode();

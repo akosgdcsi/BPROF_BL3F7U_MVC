@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Models
 {
@@ -12,6 +13,7 @@ namespace Models
     public class Star
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string StarID { get; set; }
 
         [StringLength(200)]
@@ -21,12 +23,14 @@ namespace Models
         public int Age { get; set; }
         public string SystemID { get; set; }
         [NotMapped]
+        [Newtonsoft.Json.JsonIgnore]
+        [JsonIgnore]
         public virtual System System { get; set; }
         public virtual ICollection<Planet> Planets { get; set; }
-        public override bool Equals(object obj)
-        {
-            return (obj as Star).StarID == this.StarID;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    return (obj as Star).StarID == this.StarID;
+        //}
         public override int GetHashCode()
         {
             return base.GetHashCode();  
